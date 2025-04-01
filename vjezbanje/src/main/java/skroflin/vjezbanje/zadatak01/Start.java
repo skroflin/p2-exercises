@@ -19,6 +19,7 @@ public class Start {
         Pomocno.ulaz = new Scanner(System.in);
         // ucitajIzostanke();
         ucitajKolegije();
+        ispisiKolegije();
         Pomocno.ulaz.close();
     }
     
@@ -52,6 +53,18 @@ public class Start {
         do {            
             ucitajKolegij();
         } while (!Pomocno.ucitajString("Unesi k za prekid unosa kolegija").equalsIgnoreCase("k"));
+    }
+    
+    private void ispisiKolegije(){
+        for(Kolegij k : kolegiji){
+            if(k.getIzostanak()>=k.getIzostanci().size()){
+                System.err.println(k.getNazivKolegija() + ":" + " "
+                + k.getIzostanci().size() + "/" + k.getIzostanak());
+            }else{
+                System.out.println(k.getNazivKolegija() + ":" + " "
+                + k.getIzostanci().size() + "/" + k.getIzostanak());
+            }
+        }
     }
     
     public static void main(String[] args) {
