@@ -4,6 +4,8 @@
  */
 package skroflin.vjezbanje.zadatak02;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -43,6 +45,25 @@ class Pomocno {
                 return Float.parseFloat(Pomocno.ulaz.nextLine());
             } catch (Exception e) {
                 System.out.println("Ovo je obavezan unos!");
+            }
+        }
+    }
+
+    static Date ucitajDate(String poruka) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+        Date d;
+        String s;
+        for (;;) {
+            try {
+                System.out.println(poruka);
+                s = Pomocno.ulaz.nextLine();
+                d = sdf.parse(s);
+                if (sdf.format(d).equals(s)) {
+                    return d;
+                }
+                System.out.println("Neispravan datum");
+            } catch (Exception e) {
+                System.out.println("Unos datuma obavezno u dd.MM.yyyy. formatu!");
             }
         }
     }

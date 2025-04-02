@@ -9,16 +9,16 @@ package skroflin.vjezbanje.zadatak02;
  * @author svenk
  */
 public class Student {
-    private int jmbag;
+    private String jmbag;
     private String ime;
     private String prezime;
     private float prosjek;
 
-    public int getJmbag() {
+    public String getJmbag() {
         return jmbag;
     }
 
-    public void setJmbag(int jmbag) {
+    public void setJmbag(String jmbag) {
         this.jmbag = jmbag;
     }
     
