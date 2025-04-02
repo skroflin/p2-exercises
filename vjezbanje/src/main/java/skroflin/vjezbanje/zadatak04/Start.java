@@ -19,6 +19,7 @@ public class Start {
         Pomocno.ulaz = new Scanner(System.in);
         unosProjekata();
         ispisProjekata();
+        ispisProsjekaPlace();
         Pomocno.ulaz.close();
     }
     
@@ -52,6 +53,18 @@ public class Start {
         do {            
             unosProjekta();
         } while (!Pomocno.ucitajString("Gotov s unosom projekata?" + " " + "(g)").equalsIgnoreCase("g"));
+    }
+    
+    private void ispisProsjekaPlace(){
+        float sumaPlaca = 0;
+        int brojZavrsenihProjekata = 0;
+        for (Projekt projekt : projekti) {
+            if (projekt.isJeGotov() == true) {
+                sumaPlaca += projekt.getVoditelj().getGodisnjaPlaca()/12;
+                brojZavrsenihProjekata++;
+            }
+        }
+        System.out.println("Prosjecna mjesecna plaća završenih projekata iznosi:" + " " + sumaPlaca/brojZavrsenihProjekata);
     }
     
     public static void main(String[] args) {
