@@ -23,8 +23,7 @@ public class Start {
     }
     
     private Pjesma ucitajPjesmu(){
-        Evidencija e = new Evidencija();
-        System.out.println("Unos nove pjesme na evidenciji" + " " + e.getNazivEvidencije());
+        System.out.println("Unos nove pjesme na evidenciji");
         Pjesma p = new Pjesma();
         p.setNazivIzvodaca(Pomocno.ucitajString("Upiši ime izvođača:"));
         p.setNazivPjesme(Pomocno.ucitajString("Upiši naziv pjesme:"));
@@ -56,8 +55,9 @@ public class Start {
     
     private void ispisiEvidencije(){
         for (Evidencija e : evidencije) {
-            Pjesma p = new Pjesma();
-            System.out.println(p.getNazivIzvodaca() + ":" + " " + p.getNazivPjesme() + "(" + e.getPjesme().size() + ")");
+            for (Pjesma p : e.getPjesme()) {
+                System.out.println(p.getNazivIzvodaca() + ": " + p.getNazivPjesme() + " (" + e.getPjesme().size() + ")");
+            }
         }
     }
     
