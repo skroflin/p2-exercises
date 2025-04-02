@@ -33,7 +33,7 @@ public class Start {
     private List<Pjesma> ucitajPjesme(){
         List<Pjesma> pjesme = new ArrayList<>();
         do {            
-            ucitajPjesmu();
+            pjesme.add(ucitajPjesmu());
         } while (!Pomocno.ucitajString("Unesi x za prekid unosa pjesama na evidenciju!").equalsIgnoreCase("x"));
         return pjesme;
     }
@@ -56,7 +56,16 @@ public class Start {
     private void ispisiEvidencije(){
         for (Evidencija e : evidencije) {
             for (Pjesma p : e.getPjesme()) {
-                System.out.println(p.getNazivIzvodaca() + ": " + p.getNazivPjesme() + " (" + e.getPjesme().size() + ")");
+                int brojPonavljanja = 0;
+                for (Evidencija evidencija : evidencije) {
+                    for (Pjesma pjesma : evidencija.getPjesme()) {
+                        if (pjesma.getNazivIzvodaca().equals(p.getNazivIzvodaca()) &&
+                                pjesma.getNazivPjesme().equals(p.getNazivPjesme())) {
+                                brojPonavljanja++;
+                        }
+                    }
+                }
+                System.out.println(p.getNazivIzvodaca() + ": " + p.getNazivPjesme() + "(" + brojPonavljanja + ")");
             }
         }
     }
