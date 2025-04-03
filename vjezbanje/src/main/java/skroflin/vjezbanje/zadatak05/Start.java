@@ -18,6 +18,7 @@ public class Start {
         djeca = new ArrayList<>();
         Pomocno.ulaz = new Scanner(System.in);
         ucitajDjecu();
+        ispisIzbivanja();
         Pomocno.ulaz.close();
     }
     
@@ -26,6 +27,7 @@ public class Start {
         Bolest b = new Bolest();
         b.setNazivBolesti(Pomocno.ucitajString("Unesite naziv bolesti:"));
         b.setSimptomiBolesti(Pomocno.ucitajString("Unesite simptome bolesti:"));
+        b.setTrajanjeBolesti(Pomocno.ucitajInteger("Unesite dane izbivanja zbog bolesti:"));
         return b;
     }
     
@@ -42,7 +44,7 @@ public class Start {
         Dijete d = new Dijete();
         d.setIme(Pomocno.ucitajString("Unesite ime djeteta:"));
         d.setPrezime(Pomocno.ucitajString("Unesite prezime djeteta:"));
-        d.setDatumRodenja(Pomocno.ucitajDate("Unesite datum rođenja djeteta:"));
+        d.setDatumRodenja(Pomocno.ucitajDate("Unesite datum rodenja djeteta:"));
         d.setBolesti(ucitajBolesti());
         djeca.add(d);
     }
@@ -51,5 +53,19 @@ public class Start {
         do {            
             ucitajDijete();
         } while (!Pomocno.ucitajString("Unesite slovo k za prekid unosa djece").equalsIgnoreCase("k"));
+    }
+    
+    private void ispisIzbivanja(){
+        int sumaIzbivanja = 0;
+        for (Dijete d : djeca) {
+            for (Bolest b : d.getBolesti()) {
+                sumaIzbivanja += b.getTrajanjeBolesti();
+            }
+        }
+        System.out.println("Ukupan broj dana izbivanja iz vrtica:" + " " + sumaIzbivanja);
+    }
+    
+    public static void main(String[] args) {
+        new Start();
     }
 }

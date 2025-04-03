@@ -48,4 +48,22 @@ class Pomocno {
             }
         }
     }
+
+    static int ucitajInteger(String poruka) {
+        int i = 0;
+        while (true) {            
+            System.out.println(poruka);
+            try {
+                i = Integer.parseInt(Pomocno.ulaz.nextLine());
+                if (i<0) {
+                    System.out.println("Broj mora biti pozitivan!");
+                }else{
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Greška");
+            }
+        }
+        return i;
+    }
 }
