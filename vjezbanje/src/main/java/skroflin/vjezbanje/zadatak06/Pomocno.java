@@ -13,19 +13,60 @@ import java.util.Scanner;
 class Pomocno {
     public static Scanner ulaz;
 
-    static int ucitajInteger(String unesi_šifur) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    static int ucitajInteger(String poruka) {
+        int i = 0;
+        while (true) {            
+            System.out.println(poruka);
+            try {
+                i = Integer.parseInt(Pomocno.ulaz.nextLine());
+                if (i<0) {
+                    System.out.println("Broj ne može biti manji od 0!");
+                }else{
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Greška!");
+            }
+        }
     }
 
-    static char ucitajChar(String unesi_stil_frizure) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    static char ucitajChar(String poruka) {
+        String s;
+        while (true) {            
+            System.out.println(poruka);
+            s = ulaz.nextLine();
+            if (s.trim().isEmpty()) {
+                System.out.println("Ovo je obavezan unos!");
+            }
+            return s.charAt(0);
+        }
     }
 
-    static boolean ucitajBoolean(String je_li_osoba_asocijalna) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    static boolean ucitajBoolean(String poruka) {
+        System.out.println(poruka);
+        return ulaz.nextLine().toLowerCase().trim().equals("da");
     }
 
-    static float ucitajFloat(String unesi_gustocu) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    static float ucitajFloat(String poruka) {
+        while (true) {            
+            System.out.println(poruka);
+            try {
+                return Float.parseFloat(Pomocno.ulaz.nextLine());
+            } catch (Exception e) {
+                System.out.println("Ovo je obavezan unos!");
+            }
+        }
+    }
+
+    static String ucitajString(String poruka) {
+        String s;
+        while (true) {            
+            System.out.println(poruka);
+            s = ulaz.nextLine();
+            if (s.trim().isEmpty()) {
+                System.out.println("Ovo je obavezan unos!");
+            }
+            return s;
+        }
     }
 }
