@@ -53,18 +53,16 @@ public class Start {
     }
     
     private void ispisEkostroventno(){
+        
+        int ukupanBrojTrueVrijednosti = 0;
         for (int i = 0; i < zarucnici.size(); i++) {
             Zarucnik z = zarucnici.get(i);
             System.out.println((i+1) + " " + "zarucnik:" + " " + z.getSifra() + " " 
                     + "ekstrovertan" + " - " + z.isEkstroventno());
-            
-            int ukupanBrojTrueVrijednosti = 0;
-            
-            for (Zarucnik zarucnik : zarucnici) {
-                Ostavljen o = zarucnik.getOstavljen();
-                if (o.isAsocijalno()) {
-                    ukupanBrojTrueVrijednosti++;
-                }
+
+            Ostavljen o = z.getOstavljen();
+            if (o.isAsocijalno()) {
+                ukupanBrojTrueVrijednosti++;
             }
             System.out.println("Ukupan broj istinitih vrijednosti unutar entiteta Ostavljen" + ":" + " " + ukupanBrojTrueVrijednosti);
         }
