@@ -28,6 +28,7 @@ class Pomocno {
                 System.out.println("Greška!");
             }
         }
+        return i;
     }
 
     static char ucitajChar(String poruka) {

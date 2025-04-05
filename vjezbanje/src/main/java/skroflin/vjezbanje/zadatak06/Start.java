@@ -18,6 +18,7 @@ public class Start {
         zarucnici = new ArrayList<>();
         Pomocno.ulaz = new Scanner(System.in);
         unosViseZarucnika();
+        ispisEkostroventno();
         Pomocno.ulaz.close();
     }
     
@@ -49,5 +50,27 @@ public class Start {
         do {            
             unosZarucnika();
         } while (!Pomocno.ucitajString("Unesi g za prekid unos!").equalsIgnoreCase("g"));
+    }
+    
+    private void ispisEkostroventno(){
+        for (int i = 0; i < zarucnici.size(); i++) {
+            Zarucnik z = zarucnici.get(i);
+            System.out.println((i+1) + " " + "zarucnik:" + " " + z.getSifra() + " " 
+                    + "ekstrovertan" + " - " + z.isEkstroventno());
+            
+            int ukupanBrojTrueVrijednosti = 0;
+            
+            for (Zarucnik zarucnik : zarucnici) {
+                Ostavljen o = zarucnik.getOstavljen();
+                if (o.isAsocijalno()) {
+                    ukupanBrojTrueVrijednosti++;
+                }
+            }
+            System.out.println("Ukupan broj istinitih vrijednosti unutar entiteta Ostavljen" + ":" + " " + ukupanBrojTrueVrijednosti);
+        }
+    }
+    
+    public static void main(String[] args) {
+        new Start();
     }
 }
